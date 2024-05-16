@@ -1,0 +1,80 @@
+@import "../../styles/styles.scss";
+
+.Improviser {
+  @include v-pad($gap-xl);
+  @include l-pad($gap-lg);
+  .form-container {
+    .form {
+      .train-form,
+      .generate-form {
+        @include l-pad;
+        @include col-grid(2fr 3fr);
+        & > * {
+          @include v-pad;
+        }
+        .form-subsection {
+          @include t-mar;
+          text-transform: uppercase;
+          font-size: $txt-sm;
+          color: var(--txt2);
+        }
+      }
+      input[type="number"] {
+        @include pad;
+        @include v-mar;
+      }
+      label {
+        @include h-stack;
+        @include v-mar;
+        @include wrap;
+        .help-box {
+          @include l-pad;
+          vertical-align: middle;
+        }
+      }
+      .key-control {
+        @include col-grid(1fr 1fr 1fr);
+        align-items: center;
+        select[name="mode"] {
+          @include l-mar;
+        }
+        .enforce-key-container {
+          @include h-stack-c;
+          @include h-center;
+          align-items: center;
+          label {
+            @include h-pad;
+          }
+        }
+        // input {}
+      }
+    }
+  }
+  .buttons {
+    @include h-stack-c;
+    width: 100%;
+    justify-content: space-between;
+    button {
+      width: 100%;
+      @include mar;
+    }
+    a {
+      @include btn;
+      width: 100%;
+      text-align: center;
+      &.disabled:hover {
+        background-color: var(--inactive);
+        cursor: default;
+      }
+    }
+  }
+  .description {
+    @include v-mar;
+    color: var(--txt2);
+  }
+  .status {
+    @include v-mar;
+    text-align: center;
+    color: var(--success);
+  }
+}

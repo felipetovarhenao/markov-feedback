@@ -1,0 +1,33 @@
+@import "./styles/styles.scss";
+.App {
+  @include pad($gap-lg);
+  @include v-stack;
+  @include h-center;
+  max-width: 1080px;
+  min-height: 100vh;
+  .modules {
+    @include v-pad($gap-lg);
+    @include col-grid(1fr 1fr);
+    @include desktop-down {
+      @include col-grid(1fr);
+    }
+  }
+  .footer {
+    @include to-bottom;
+    @include h-center;
+    @include v-pad;
+    align-items: center;
+    a {
+      @include h-pad;
+      vertical-align: middle;
+      color: var(--primary);
+      &:hover {
+        color: var(--secondary);
+      }
+    }
+    .gh-icon {
+      vertical-align: middle;
+      font-size: $txt-xl;
+    }
+  }
+}

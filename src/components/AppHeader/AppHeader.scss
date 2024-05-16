@@ -1,0 +1,23 @@
+@import "../../styles/styles.scss";
+
+.AppHeader {
+  .header {
+    @include v-pad($gap-lg);
+    .icon {
+      @include r-pad($gap-lg);
+      @include b-pad;
+      font-size: 70px;
+      vertical-align: middle;
+    }
+    .logo {
+      @include h-center;
+      justify-content: center;
+      align-items: center;
+      max-height: 100px;
+    }
+    .title {
+      font-size: $txt-xl;
+      text-align: center;
+    }
+  }
+}

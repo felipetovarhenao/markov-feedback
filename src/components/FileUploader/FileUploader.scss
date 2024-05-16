@@ -1,0 +1,32 @@
+@import "../../styles/styles.scss";
+
+.FileUploader {
+  @include v-pad($gap-xl);
+  @include r-pad($gap-lg);
+  input[type="file"] {
+    display: none;
+  }
+
+  .file-menu {
+    @include v-stack;
+    @include round;
+    height: 312px;
+    overflow: auto;
+    background-color: var(--bg2);
+  }
+  .ButtonPanel {
+    label {
+      @include stack;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .description {
+    @include v-mar;
+    color: var(--txt2);
+  }
+  .status {
+    @include v-mar;
+    text-align: center;
+  }
+}
