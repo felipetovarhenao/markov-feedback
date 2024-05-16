@@ -21,7 +21,7 @@ export default function App() {
               https://felipe-tovar-henao.com/
             </a>
             &nbsp;|&nbsp;
-            <a target="_blank" rel="noreferrer" href="https://github.com/felipetovarhenao/midi-improviser">
+            <a target="_blank" rel="noreferrer" href="https://github.com/felipetovarhenao/markov-feedback">
               <Icon className="gh-icon" icon="mdi:github" /> view on github
             </a>
           </footer>
