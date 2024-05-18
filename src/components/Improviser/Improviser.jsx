@@ -85,7 +85,7 @@ export default function Improviser() {
     const bufferArray = await improviser.generateRecursively(
       Number(numNotes),
       Number(tempo),
-      Number(reinforcementFactor) / 100,
+      Math.log2(Number(reinforcementFactor) / 100),
       Number(maxReinforcement) / 100
     );
 
@@ -139,17 +139,16 @@ export default function Improviser() {
             <label htmlFor="memory">
               Order-boosting steps{" "}
               <HelpBox>
-                Amount of contextual information the improviser considers to generate music. A higher memory value will increase the consistency and
-                predictability of the improvisation.
+                The number of times the generated output is used as training data for a new Markov model, that is one order higher than the previous one.
               </HelpBox>
             </label>
             <Slider
               name={"memory"}
               value={markovOrder}
               inMin={1}
-              inMax={9}
+              inMax={15}
               outMin={1}
-              outMax={9}
+              outMax={15}
               setValue={(value) => {
                 setStorageValue(setMarkovOrder, "markovOrder")(value);
               }}
@@ -158,22 +157,24 @@ export default function Improviser() {
               Prediction reinforcement
               <HelpBox>
                 <p>
-                  Degree to which the improviser can update its musical knowledge during the improvisation, encouraging the repetition of previously
-                  made choices.
+                  Factor by which each prediction's transition probability is reinforced, when below the reinforcement threshold. 1 is equivalent to no reinforcement.
                 </p>
               </HelpBox>
             </label>
             <Slider
               name={"reinforcement-slider"}
               value={reinforcementFactor}
+              inMin={100}
+              inMax={200}
+              outMin={1.}
+              outMax={2.}
               setValue={setStorageValue(setReinforcementFactor, "reinforcementFactor")}
             />
             <label htmlFor="max-reinforcement-slider">
-              Max. reinforcement
+              Reinforcement threshold
               <HelpBox>
                 <p>
-                  Degree to which the improviser can update its musical knowledge during the improvisation, encouraging the repetition of previously
-                  made choices.
+                  Value below which prediction reinforcement can be applied, so as to prevent excesive repetitions in the output. 1 is equivalent to no threshold, 0 is equivalent to no reinforcement.
                 </p>
               </HelpBox>
             </label>
