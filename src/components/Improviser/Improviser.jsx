@@ -113,7 +113,7 @@ export default function Improviser() {
         <form className="form" onSubmit={(e) => e.preventDefault()}>
           <div className="train-form">
             <label htmlFor="initialOrder">
-              Initial Markov order <HelpBox>Order of the initial Markov model.</HelpBox>
+              Initial Markov order <HelpBox>Order of the initial Markov model. Lower values increase the chances of dissimilarity between training and generated data.</HelpBox>
             </label>
             <Slider
               name={"initialOrder"}
