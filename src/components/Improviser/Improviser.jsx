@@ -53,7 +53,7 @@ export default function Improviser() {
   const [tempo, setTempo] = useState(getStorageValue("tempo") || 90);
   const [markovOrder, setMarkovOrder] = useState(getStorageValue("markovOrder") || 5);
   const [initialOrder, setInitialOrder] = useState(getStorageValue("initialOrder") || 1);
-  const [reinforcementFactor, setReinforcementFactor] = useState(getStorageValue("reinforcementFactor") || 90);
+  const [reinforcementFactor, setReinforcementFactor] = useState(getStorageValue("reinforcementFactor") || 180);
   const [maxReinforcement, setMaxReinforcement] = useState(getStorageValue("maxReinforcement") || 66);
 
   async function train() {
