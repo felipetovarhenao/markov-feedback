@@ -224,7 +224,7 @@ export default class Improviser {
     return (pitch) => pitch + table[(pitch + 12) % 12];
   }
 
-  async generate(maxNotes = 100, tempo = 90, key = "C", scale = "major", choiceReinforcement = 0.0, enforceKey = false) {
+  async generate(maxNotes = 100, tempo = 90, choiceReinforcement = 0.0, maxReinforcement = 1.0, key = "C", scale = "major", enforceKey = false) {
     /* intialize midi */
     var midi = new Midi();
     const pitchQuantizer = enforceKey && this.getPitchQuantizer(key, scale);
@@ -278,12 +278,12 @@ export default class Improviser {
 
     /* bind callback to instance */
     stateToMidiNote.bind(this);
-    this.markov.run(maxNotes, stateToMidiNote, choiceReinforcement);
+    this.markov.run(maxNotes, stateToMidiNote, choiceReinforcement, maxReinforcement);
     midi = this.cleanMidi(midi, chordSizes, maxChordSize);
     return midi;
   }
 
-  async generateRecursively(maxNotes = 100, tempo = 90, key = "C", scale = "major", choiceReinforcement = 0.0, enforceKey = false) {
+  async generateRecursively(maxNotes = 100, tempo = 90, choiceReinforcement = 0.0, maxReinforcement = 1.0, key = "C", scale = "major", enforceKey = false) {
     let midi;
     for (let i = 0; i < this.getMemory(); i++) {
       const improv = new Improviser(i + this.predictability);
@@ -293,7 +293,7 @@ export default class Improviser {
       } else {
         await improv.train([midi]);
       }
-      midi = await improv.generate(maxNotes, tempo, key, scale, choiceReinforcement, enforceKey);
+      midi = await improv.generate(maxNotes, tempo, choiceReinforcement, maxReinforcement, key, scale, enforceKey);
     }
     return midi.toArray();
   }

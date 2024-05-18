@@ -11,7 +11,6 @@ export default class MarkovModel {
     this.transitionTable = {};
     this.stateWeights = {};
     this.chance = new Chance();
-    this.maxReinforcement = 2 / 3;
   }
 
   reset() {
@@ -60,7 +59,7 @@ export default class MarkovModel {
     return JSON.parse(JSON.stringify(this.transitionTable));
   }
 
-  run(numIter = 100, lambda = false, choiceReinforcement = 0.0, allowReset = true) {
+  run(numIter = 100, lambda = false, choiceReinforcement = 0.0, maxReinforcement = 1.0, allowReset = true) {
     const matrix = this.getTransitionTableCopy();
     let current = this.choose(this.stateWeights);
 
@@ -100,9 +99,9 @@ export default class MarkovModel {
         const probRatio = transitions[nextState] / sum;
 
         /* increase probability if below threshold */
-        if (probRatio < this.maxReinforcement) {
+        if (probRatio < maxReinforcement) {
           const newValue = matrix[current][nextState] * 2 ** choiceReinforcement;
-          const maxValue = (this.maxReinforcement * (sum - matrix[current][nextState])) / (1 - this.maxReinforcement);
+          const maxValue = (maxReinforcement * (sum - matrix[current][nextState])) / (1 - maxReinforcement);
 
           /* increase, but not more than allowed */
           matrix[current][nextState] = Math.min(newValue, maxValue);
