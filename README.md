@@ -1,11 +1,11 @@
-# [MIDI improviser](https://felipe-tovar-henao.com/markov-feedback) :musical_keyboard: 
+# [Markov feedback](https://felipe-tovar-henao.com/markov-feedback) :musical_keyboard: 
 -----------------------
 
 ## Description
 
-**MIDI improviser** is a web application that generates a polyphonic music improvisation as a MIDI file, based on one or more MIDI files provided by the user.
+This is a web implementation of a feedback-based Markov model for symbolic music generation.
         
-To use **MIDI improviser**, click [here](https://felipe-tovar-henao.com/markov-feedback).
+To try it, go to [here](https://felipe-tovar-henao.com/markov-feedback).
 
 ## License
 ISC License

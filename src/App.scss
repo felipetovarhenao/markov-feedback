@@ -1,6 +1,6 @@
 @import "./styles/styles.scss";
 .App {
-  @include pad($gap-lg);
+  @include pad($gap-xl);
   @include v-stack;
   @include h-center;
   max-width: 1080px;

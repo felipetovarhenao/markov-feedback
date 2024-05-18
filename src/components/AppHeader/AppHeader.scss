@@ -18,6 +18,13 @@
     .title {
       font-size: $txt-xl;
       text-align: center;
+      text-transform: capitalize;
+    }
+    .subtitle {
+      font-weight: lighter;
+      font-size: $txt-ml;
+      text-align: center;
+      text-transform: lowercase;
     }
   }
 }
