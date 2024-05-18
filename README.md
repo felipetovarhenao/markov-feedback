@@ -5,7 +5,7 @@
 
 This is a web implementation of a feedback-based Markov model for symbolic music generation.
         
-To try it, go to [here](https://felipe-tovar-henao.com/markov-feedback).
+To try it, click [here](https://felipe-tovar-henao.com/markov-feedback).
 
 ## License
 ISC License
