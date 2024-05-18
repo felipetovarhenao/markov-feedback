@@ -78,7 +78,7 @@ export default function Improviser() {
     setDownloadURL(false);
     setStatus("generating MIDI...");
 
-    const memory = Number(markovOrder);
+    const memory = Number(markovOrder) + 1;
     if (improviser.getMemory() !== memory) {
       improviser.setMemory(memory, false);
     }
@@ -139,15 +139,15 @@ export default function Improviser() {
             <label htmlFor="memory">
               Order-boosting steps{" "}
               <HelpBox>
-                The number of times the generated output is used as training data for a new Markov model, that is one order higher than the previous one.
+                The number of times the generated output is used as training data for a new Markov model, that is one order higher than the previous one. 0 steps is equivalent to a regular markov model.
               </HelpBox>
             </label>
             <Slider
               name={"memory"}
               value={markovOrder}
-              inMin={1}
+              inMin={0}
               inMax={15}
-              outMin={1}
+              outMin={0}
               outMax={15}
               setValue={(value) => {
                 setStorageValue(setMarkovOrder, "markovOrder")(value);
